@@ -1,10 +1,15 @@
 package hotel.management.system;
 
 import java.awt.*;
-import javax. swing.*;
+import javax.swing.*;
 import java.awt.event.*;
+import java.sql.*;
 
-public class Login extends JFrame implements ActionListener{
+public class Login extends JFrame implements ActionListener {
+    
+    JTextField username;
+    JPasswordField password;  // Changed to JPasswordField
+    JButton login, cancel;
     
     Login() {
         getContentPane().setBackground(Color.BLACK);
@@ -16,7 +21,7 @@ public class Login extends JFrame implements ActionListener{
         user.setForeground(Color.WHITE);
         add(user);
         
-        JTextField username = new JTextField();
+        username = new JTextField();
         username.setBounds(150, 20, 150, 30);
         add(username);
         
@@ -25,22 +30,24 @@ public class Login extends JFrame implements ActionListener{
         pass.setForeground(Color.WHITE);
         add(pass);
         
-        JTextField password = new JTextField();
+        password = new JPasswordField();  // Changed to JPasswordField
         password.setBounds(150, 70, 150, 30);
         add(password);
         
-        JButton login = new JButton("Login");
+        login = new JButton("Login");
         login.setBounds(40, 150, 120, 30);
         login.setBackground(Color.WHITE);
         login.setForeground(Color.BLACK);
         login.setFont(new Font("serif", Font.PLAIN, 24));
+        login.addActionListener(this);  // Corrected action listener for login
         add(login);
         
-        JButton cancel = new JButton("Cancel");
+        cancel = new JButton("Cancel");
         cancel.setBounds(180, 150, 120, 30);
         cancel.setBackground(Color.WHITE);
         cancel.setForeground(Color.BLACK);
         cancel.setFont(new Font("serif", Font.PLAIN, 24));
+        cancel.addActionListener(this);  // Corrected action listener for cancel
         add(cancel);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/second.jpg"));
@@ -50,10 +57,37 @@ public class Login extends JFrame implements ActionListener{
         image.setBounds(350, 10, 200, 200);
         add(image);
         
-        
-        
         setBounds(500, 200, 600, 300);
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == login) {
+            String user = username.getText();
+            String pass = String.valueOf(password.getPassword());  // Changed to handle JPasswordField
+            
+            try {
+                Conn c = new Conn();
+                
+                String query = "select * from login where username = '" + user + "' and password = '" + pass + "'";
+                
+                ResultSet rs = c.s.executeQuery(query);
+                
+                if (rs.next()) {
+                    setVisible(false);
+                    new Dashboard();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Input");
+                    username.setText("");  // Clear fields on invalid input
+                    password.setText("");
+                }
+                
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        } else if (ae.getSource() == cancel) {
+            setVisible(false);
+        }
     }
     
     public static void main(String[] args) {
