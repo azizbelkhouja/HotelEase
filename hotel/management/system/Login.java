@@ -2,8 +2,9 @@ package hotel.management.system;
 
 import java.awt.*;
 import javax. swing.*;
+import java.awt.event.*;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener{
     
     Login() {
         getContentPane().setBackground(Color.BLACK);
