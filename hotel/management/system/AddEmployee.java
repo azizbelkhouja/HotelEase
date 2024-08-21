@@ -2,8 +2,14 @@ package hotel.management.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class AddEmployee extends JFrame implements ActionListener {
+    
+    JTextField tfname, tfage, tfphone, tfemail, tfsalary, tfcf;
+    JRadioButton rbmale, rbfemale;
+    JButton submit;
+    JComboBox cbjob;
     
     AddEmployee() {
        setLayout(null);
@@ -13,7 +19,7 @@ public class AddEmployee extends JFrame implements ActionListener {
        lblname.setBounds(60, 30, 120, 30);
        lblname.setFont(new Font("serif", Font.PLAIN, 17));
        add(lblname);
-       JTextField tfname = new JTextField();
+       tfname = new JTextField();
        tfname.setBounds(200, 30, 150, 30);
        add(tfname);
        
@@ -22,7 +28,7 @@ public class AddEmployee extends JFrame implements ActionListener {
        lblage.setBounds(60, 80, 120, 30);
        lblage.setFont(new Font("serif", Font.PLAIN, 17));
        add(lblage);
-       JTextField tfage = new JTextField();
+       tfage = new JTextField();
        tfage.setBounds(200, 80, 150, 30);
        add(tfage);
        
@@ -31,16 +37,20 @@ public class AddEmployee extends JFrame implements ActionListener {
        lblgender.setBounds(60, 130, 120, 30);
        lblgender.setFont(new Font("serif", Font.PLAIN, 17));
        add(lblgender);
-       JRadioButton rbmale = new JRadioButton("Male");
+       rbmale = new JRadioButton("Male");
        rbmale.setBounds(200, 130, 70, 30);
        lblage.setFont(new Font("serif", Font.PLAIN, 14));
        rbmale.setBackground(Color.WHITE);
        add(rbmale);
-       JRadioButton rbfemale = new JRadioButton("Female");
+       rbfemale = new JRadioButton("Female");
        rbfemale.setBounds(280, 130, 70, 30);
        lblage.setFont(new Font("serif", Font.PLAIN, 14));
        rbfemale.setBackground(Color.WHITE);
        add(rbfemale);
+       
+       ButtonGroup bg = new ButtonGroup();
+       bg.add(rbmale);
+       bg.add(rbfemale);
        
        //job 
        JLabel lbljob = new JLabel("JOB: ");
@@ -48,7 +58,7 @@ public class AddEmployee extends JFrame implements ActionListener {
        lbljob.setFont(new Font("serif", Font.PLAIN, 17));
        add(lbljob);
        String str[] = {"Front Desk Clerks","Porters","Housekeeping","Kitchen Staff","Room Service","Waiter/Waitress","Manager","Accountant","Chef"};
-       JComboBox cbjob = new JComboBox(str);
+       cbjob = new JComboBox(str);
        cbjob.setBounds(200, 180, 150, 30);
        cbjob.setBackground(Color.WHITE);
        add(cbjob);
@@ -58,7 +68,7 @@ public class AddEmployee extends JFrame implements ActionListener {
        lblsalary.setBounds(60, 230, 120, 30);
        lblsalary.setFont(new Font("serif", Font.PLAIN, 17));
        add(lblsalary);
-       JTextField tfsalary = new JTextField();
+       tfsalary = new JTextField();
        tfsalary.setBounds(200, 230, 150, 30);
        add(tfsalary);
        
@@ -67,7 +77,7 @@ public class AddEmployee extends JFrame implements ActionListener {
        lblphone.setBounds(60, 280, 120, 30);
        lblphone.setFont(new Font("serif", Font.PLAIN, 17));
        add(lblphone);
-       JTextField tfphone = new JTextField();
+       tfphone = new JTextField();
        tfphone.setBounds(200, 280, 150, 30);
        add(tfphone);
        
@@ -76,16 +86,26 @@ public class AddEmployee extends JFrame implements ActionListener {
        lblemail.setBounds(60, 330, 120, 30);
        lblemail.setFont(new Font("serif", Font.PLAIN, 17));
        add(lblemail);
-       JTextField tfemail = new JTextField();
+       tfemail = new JTextField();
        tfemail.setBounds(200, 330, 150, 30);
        add(tfemail);
        
+       // CODICE FISCALE
+       JLabel lblcf = new JLabel("FISCAL CODE: ");
+       lblcf.setBounds(60, 380, 120, 30);
+       lblcf.setFont(new Font("serif", Font.PLAIN, 17));
+       add(lblcf);
+       tfcf = new JTextField();
+       tfcf.setBounds(200, 380, 150, 30);
+       add(tfcf);
+       
        //submit button
-       JButton submit = new JButton("SUBMIT");
+       submit = new JButton("SUBMIT");
        submit.setBounds(200, 430, 150, 30);
        submit.setBackground(Color.BLACK);
        submit.setForeground(Color.WHITE);
        submit.setFont(new Font("serif", Font.PLAIN, 24));
+       submit.addActionListener(this);
        add(submit);
        
        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/tenth.jpg"));
@@ -101,6 +121,43 @@ public class AddEmployee extends JFrame implements ActionListener {
        setVisible(true);
     } 
    
+    public void actionPerformed(ActionEvent ae) {
+        
+        String name = tfname.getText();
+        String age = tfage.getText();
+        String salary = tfsalary.getText();
+        String phone = tfphone.getText();
+        String cf = tfcf.getText();
+        String email = tfemail.getText();
+
+        String gender = null;
+        
+        
+
+        if(rbmale.isSelected()){
+            gender = "male";
+
+        }else if(rbfemale.isSelected()){
+            gender = "female";
+        }
+        
+        String job = (String) cbjob.getSelectedItem();
+        
+        try {
+            Conn conn = new Conn();
+            String query = "INSERT INTO employee values( '"+name+"', '"+age+"', '"+gender+"','"+job+"', '"+salary+"', '"+phone+"','"+email+"', '"+cf+"')";
+
+            conn.s.executeUpdate(query);
+            JOptionPane.showMessageDialog(null,"Employee Added");
+            setVisible(false);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+    }
+    
     public static void main(String[] args) {
        new AddEmployee();
     }
