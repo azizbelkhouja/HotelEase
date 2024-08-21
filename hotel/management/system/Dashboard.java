@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Dashboard extends JFrame {
+public class Dashboard extends JFrame implements ActionListener {
     
     Dashboard() {
         setBounds(0,0,1550,1000);
@@ -45,6 +45,11 @@ public class Dashboard extends JFrame {
         admin.add(addrooms);
         JMenuItem adddrivers = new JMenuItem("ADD DRIVERS");
         admin.add(adddrivers);
+        
+        addemployee.addActionListener(this);
+        addrooms.addActionListener(this);
+        adddrivers.addActionListener(this);
+        reception.addActionListener(this);
         
         setVisible(true);
     }
