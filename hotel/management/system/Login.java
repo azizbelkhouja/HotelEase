@@ -8,7 +8,7 @@ import java.sql.*;
 public class Login extends JFrame implements ActionListener {
     
     JTextField username;
-    JPasswordField password;  // Changed to JPasswordField
+    JPasswordField password;
     JButton login, cancel;
     
     Login() {
@@ -30,7 +30,7 @@ public class Login extends JFrame implements ActionListener {
         pass.setForeground(Color.WHITE);
         add(pass);
         
-        password = new JPasswordField();  // Changed to JPasswordField
+        password = new JPasswordField();
         password.setBounds(150, 70, 150, 30);
         add(password);
         
@@ -39,7 +39,7 @@ public class Login extends JFrame implements ActionListener {
         login.setBackground(Color.WHITE);
         login.setForeground(Color.BLACK);
         login.setFont(new Font("serif", Font.PLAIN, 24));
-        login.addActionListener(this);  // Corrected action listener for login
+        login.addActionListener(this);
         add(login);
         
         cancel = new JButton("Cancel");
@@ -47,7 +47,7 @@ public class Login extends JFrame implements ActionListener {
         cancel.setBackground(Color.WHITE);
         cancel.setForeground(Color.BLACK);
         cancel.setFont(new Font("serif", Font.PLAIN, 24));
-        cancel.addActionListener(this);  // Corrected action listener for cancel
+        cancel.addActionListener(this);
         add(cancel);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/second.jpg"));
@@ -64,26 +64,41 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == login) {
             String user = username.getText();
-            String pass = String.valueOf(password.getPassword());  // Changed to handle JPasswordField
+            String pass = String.valueOf(password.getPassword());
+            
+            Conn c = null;
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
             
             try {
-                Conn c = new Conn();
+                c = new Conn();
                 
-                String query = "select * from login where username = '" + user + "' and password = '" + pass + "'";
+                String query = "SELECT * FROM login WHERE username = ? AND password = ?";
+                pstmt = c.c.prepareStatement(query);
+                pstmt.setString(1, user);
+                pstmt.setString(2, pass);
                 
-                ResultSet rs = c.s.executeQuery(query);
+                rs = pstmt.executeQuery();
                 
                 if (rs.next()) {
                     setVisible(false);
                     new Dashboard();
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid Input");
-                    username.setText("");  // Clear fields on invalid input
+                    username.setText("");
                     password.setText("");
                 }
                 
-            } catch(Exception e) {
+            } catch(SQLException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                    if (pstmt != null) pstmt.close();
+                    if (c != null) c.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         } else if (ae.getSource() == cancel) {
             setVisible(false);

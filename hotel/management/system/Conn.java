@@ -7,14 +7,26 @@ public class Conn {
     Connection c;
     Statement s;
     
-    public Conn() {
+    public Conn() throws SQLException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            c = DriverManager.getConnection("jdbc:mysql:///hotelmanagementsystem", "root", "azizbelkhouja");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelmanagementsystem", "root", "azizbelkhouja");
             s = c.createStatement();
-        
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC Driver not found.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Connection to database failed.");
+            e.printStackTrace();
+            throw e; // rethrow exception to be handled where needed
         }
-        catch (Exception e) {
+    }
+    
+    public void close() {
+        try {
+            if (s != null) s.close();
+            if (c != null) c.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
