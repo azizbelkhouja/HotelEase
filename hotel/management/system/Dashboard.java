@@ -2,6 +2,7 @@ package hotel.management.system;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class Dashboard extends JFrame {
     
@@ -46,6 +47,14 @@ public class Dashboard extends JFrame {
         admin.add(adddrivers);
         
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getActionCommand().equals("ADD EMPLOYEE")) {
+            new AddEmployee();
+        } else if (ae.getActionCommand().equals("ADD ROOMS")) {
+            new AddRooms();
+        }
     }
     
     public static void main(String[] args) {
