@@ -1,6 +1,5 @@
 package hotel.management.system;
 
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -15,11 +14,6 @@ public class AddRooms extends JFrame implements ActionListener{
     private JComboBox comboBox, comboBox_1, comboBox_2, comboBox_3;
     JButton b1,b2;
     Choice c1;
-
-    public static void main(String[] args) {
-        new AddRooms().setVisible(true);
-    }
-
 
     public AddRooms() {
         setBounds(450, 200, 1000, 450);
@@ -147,4 +141,9 @@ public class AddRooms extends JFrame implements ActionListener{
             
         }
     }
+    
+    public static void main(String[] args) {
+        new AddRooms().setVisible(true);
+    }
+    
 }
