@@ -109,7 +109,8 @@ public class AddRooms extends JFrame implements ActionListener{
 
 	
         contentPane.setBackground(Color.WHITE);
-    
+        
+        setVisible(true);
     }
     
     public void actionPerformed(ActionEvent ae){
@@ -143,7 +144,7 @@ public class AddRooms extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args) {
-        new AddRooms().setVisible(true);
+        new AddRooms();
     }
     
 }
