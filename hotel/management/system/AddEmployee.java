@@ -41,12 +41,12 @@ public class AddEmployee extends JFrame implements ActionListener {
        add(lblgender);
        rbmale = new JRadioButton("Male");
        rbmale.setBounds(200, 130, 70, 30);
-       lblage.setFont(new Font("serif", Font.PLAIN, 14));
+       rbmale.setFont(new Font("serif", Font.PLAIN, 14));
        rbmale.setBackground(Color.WHITE);
        add(rbmale);
        rbfemale = new JRadioButton("Female");
        rbfemale.setBounds(280, 130, 70, 30);
-       lblage.setFont(new Font("serif", Font.PLAIN, 14));
+       rbfemale.setFont(new Font("serif", Font.PLAIN, 14));
        rbfemale.setBackground(Color.WHITE);
        add(rbfemale);
        
