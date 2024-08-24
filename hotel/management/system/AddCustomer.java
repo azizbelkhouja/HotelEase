@@ -9,10 +9,11 @@ import java.util.Date;
 public class AddCustomer extends JFrame {
     
     JComboBox comboid;
-    JTextField tfnumber, tfname, tfcountry;
+    JTextField tfnumber, tfname, tfcountry, tfdeposit;
     JRadioButton rbmale, rbfemale;
     Choice croom;
     JLabel checkintime;
+    JButton add, back;
     
     AddCustomer() {
         
@@ -105,6 +106,26 @@ public class AddCustomer extends JFrame {
         checkintime.setBounds(200, 320, 150, 20);
         checkintime.setFont(new Font("Raleway", Font.PLAIN, 14));
         add(checkintime);
+        
+        JLabel lbldeposit = new JLabel("Country: ");
+        lbldeposit.setBounds(35, 360, 100, 20);
+        lbldeposit.setFont(new Font("Raleway", Font.PLAIN, 20));
+        add(lbldeposit);
+        tfdeposit = new JTextField();
+        tfdeposit.setBounds(200, 360, 150, 25);
+        add(tfdeposit);
+        
+        add = new JButton("Add");
+        add.setBackground(Color.BLACK);
+        add.setForeground(Color.WHITE);
+        add.setBounds(50, 410, 120, 30);
+        add(add);
+        
+        back = new JButton("Back");
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
+        back.setBounds(200, 410, 120, 30);
+        add(back);
         
         
         
