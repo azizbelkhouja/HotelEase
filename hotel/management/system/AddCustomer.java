@@ -6,10 +6,9 @@ import java.sql.*;
 import java.util.Date;
 import java.awt.event.*;
 
-
-public class AddCustomer extends JFrame implemets ActionListener {
+public class AddCustomer extends JFrame implements ActionListener {
     
-    JComboBox comboid;
+    JComboBox<String> comboid;
     JTextField tfnumber, tfname, tfcountry, tfdeposit;
     JRadioButton rbmale, rbfemale;
     Choice croom;
@@ -31,8 +30,8 @@ public class AddCustomer extends JFrame implemets ActionListener {
         lblid.setFont(new Font("Raleway", Font.PLAIN, 20));
         add(lblid);
         
-        String options[] = {"FISCAL CODE", "Passeport", "Driving Licence"};
-        comboid = new JComboBox(options);
+        String[] options = {"FISCAL CODE", "Passport", "Driving Licence"};
+        comboid = new JComboBox<>(options);
         comboid.setBounds(200, 80, 150, 25);
         comboid.setBackground(Color.WHITE);
         add(comboid);
@@ -89,7 +88,7 @@ public class AddCustomer extends JFrame implemets ActionListener {
             Conn conn = new Conn();
             String query = "select * from room";
             ResultSet rs = conn.s.executeQuery(query);
-            while(rs.next()) {
+            while (rs.next()) {
                 croom.add(rs.getString("roomnumber"));
             }
         } catch (Exception e) {
@@ -108,7 +107,7 @@ public class AddCustomer extends JFrame implemets ActionListener {
         checkintime.setFont(new Font("Raleway", Font.PLAIN, 14));
         add(checkintime);
         
-        JLabel lbldeposit = new JLabel("Country: ");
+        JLabel lbldeposit = new JLabel("Deposit: ");
         lbldeposit.setBounds(35, 360, 100, 20);
         lbldeposit.setFont(new Font("Raleway", Font.PLAIN, 20));
         add(lbldeposit);
@@ -120,12 +119,14 @@ public class AddCustomer extends JFrame implemets ActionListener {
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
         add.setBounds(50, 410, 120, 30);
+        add.addActionListener(this);
         add(add);
         
         back = new JButton("Back");
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         back.setBounds(200, 410, 120, 30);
+        back.addActionListener(this); // Added ActionListener for the back button
         add(back);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fifth.png"));
@@ -135,7 +136,7 @@ public class AddCustomer extends JFrame implemets ActionListener {
         image.setBounds(400, 50, 300, 400);
         add(image);
         
-        setBounds(350,200,800,550);
+        setBounds(350, 200, 800, 550);
         setVisible(true);
     }
     
@@ -143,21 +144,41 @@ public class AddCustomer extends JFrame implemets ActionListener {
         if (ae.getSource() == add) {
             String id = (String) comboid.getSelectedItem();
             String number = tfnumber.getText();
-            String name = tfname.getText():
+            String name = tfname.getText();
             String gender = null;
             
-            if (rmale.isSelected) {
+            if (rbmale.isSelected()) {
                 gender = "Male";
             } else {
                 gender = "Female";
             }
-        } else if (ae.getSource() == back) {
             
+            String country = tfcountry.getText();
+            String room = croom.getSelectedItem();
+            String time = checkintime.getText();
+            String deposit = tfdeposit.getText();
+
+            try {
+                String query1 = "insert into customer values('" + id + "','" + number + "','" + name + "','" + gender + "','" + country + "','" + room + "','" + time + "','" + deposit + "')";
+                String query2 = "update room set availability = 'Occupied' where roomnumber = '" + room + "'";
+                
+                Conn conn = new Conn();
+                conn.s.executeUpdate(query1);
+                conn.s.executeUpdate(query2);
+                
+                JOptionPane.showMessageDialog(null, "Data Inserted Successfully");
+                setVisible(false);
+                new Reception();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        } else if (ae.getSource() == back) {
+            setVisible(false);
+            new Reception();  // Go back to the Reception screen
         }
     }
-    
-    
-    
     
     public static void main(String[] args) {
         new AddCustomer();
