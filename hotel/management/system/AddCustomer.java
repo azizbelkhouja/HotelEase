@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 import java.util.Date;
+import java.awt.event.*;
 
 
-public class AddCustomer extends JFrame {
+public class AddCustomer extends JFrame implemets ActionListener {
     
     JComboBox comboid;
     JTextField tfnumber, tfname, tfcountry, tfdeposit;
@@ -126,6 +127,13 @@ public class AddCustomer extends JFrame {
         back.setForeground(Color.WHITE);
         back.setBounds(200, 410, 120, 30);
         add(back);
+        
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fifth.png"));
+        Image i2 = i1.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(400, 50, 300, 400);
+        add(image);
         
         
         
