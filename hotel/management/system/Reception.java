@@ -109,9 +109,6 @@ public class Reception extends JFrame implements ActionListener {
                 case "New Customer Form":
                     new AddCustomer().setVisible(true);
                     break;
-                case "Room":
-                    new AddRooms().setVisible(true);
-                    break;
                 // to add more cases as necessary for other buttons
                 default:
                     break;
