@@ -135,17 +135,25 @@ public class AddCustomer extends JFrame implemets ActionListener {
         image.setBounds(400, 50, 300, 400);
         add(image);
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
         setBounds(350,200,800,550);
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == add) {
+            String id = (String) comboid.getSelectedItem();
+            String number = tfnumber.getText();
+            String name = tfname.getText():
+            String gender = null;
+            
+            if (rmale.isSelected) {
+                gender = "Male";
+            } else {
+                gender = "Female";
+            }
+        } else if (ae.getSource() == back) {
+            
+        }
     }
     
     
