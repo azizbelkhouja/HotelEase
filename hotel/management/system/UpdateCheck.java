@@ -133,7 +133,18 @@ public class UpdateCheck extends JFrame implements ActionListener {
                 e.getStackTrace();
             }
         } else if (ae.getSource() == update) {
+            String number = ccustomer.getSelectedItem();
+            String room = tfroom.getText();
+            String name = tfname.getText();
+            String checkin = tfcheckin.getText();
+            String deposit = tfpaid.getText();
             
+            try {
+                Conn c = new Conn();
+                c.s.executeUpdate("update customer set room = '"+room+"', name = '"+name+"', checkintime = '"+checkin+"', deposit = '"+deposit+"' ");
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
         } else {
             
         }
