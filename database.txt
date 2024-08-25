@@ -1,0 +1,103 @@
+CREATE DATABASE hotelmanagementsystem;
+
+SHOW DATABASES;
+
+USE hotelmanagementsystem;
+
+CREATE TABLE login(
+    username VARCHAR(25), 
+    password VARCHAR(25)
+);
+
+INSERT INTO login VALUES('admin', 'admin');
+INSERT INTO login VALUES('user1', 'password1');
+INSERT INTO login VALUES('user2', 'password2');
+INSERT INTO login VALUES('user3', 'password3');
+INSERT INTO login VALUES('user4', 'password4');
+
+SELECT * FROM login;
+
+CREATE TABLE employee(
+    name VARCHAR(25), 
+    age VARCHAR(10), 
+    gender VARCHAR(15), 
+    job VARCHAR(30), 
+    salary VARCHAR(15), 
+    phone VARCHAR(15), 
+    email VARCHAR(40), 
+    cf VARCHAR(15)
+);
+
+INSERT INTO employee VALUES('John Doe', '29', 'Male', 'Manager', '50000', '1234567890', 'john@example.com', 'CF123');
+INSERT INTO employee VALUES('Jane Smith', '25', 'Female', 'Receptionist', '30000', '0987654321', 'jane@example.com', 'CF124');
+INSERT INTO employee VALUES('Robert Brown', '40', 'Male', 'Chef', '45000', '1122334455', 'robert@example.com', 'CF125');
+INSERT INTO employee VALUES('Linda Green', '35', 'Female', 'Housekeeper', '28000', '2233445566', 'linda@example.com', 'CF126');
+INSERT INTO employee VALUES('Michael Blue', '32', 'Male', 'Bartender', '35000', '6677889900', 'michael@example.com', 'CF127');
+
+SELECT * FROM employee;
+
+CREATE TABLE room(
+    roomnumber VARCHAR(10), 
+    availability VARCHAR(20), 
+    cleaning_status VARCHAR(20), 
+    price VARCHAR(20), 
+    bed_type VARCHAR(20)
+);
+
+INSERT INTO room VALUES('101', 'Available', 'Clean', '150', 'Single');
+INSERT INTO room VALUES('102', 'Occupied', 'Dirty', '200', 'Double');
+INSERT INTO room VALUES('103', 'Available', 'Clean', '250', 'Suite');
+INSERT INTO room VALUES('104', 'Available', 'Clean', '180', 'Double');
+INSERT INTO room VALUES('105', 'Occupied', 'Dirty', '300', 'Suite');
+
+SELECT * FROM room;
+
+CREATE TABLE driver(
+    name VARCHAR(25), 
+    age VARCHAR(10), 
+    gender VARCHAR(15), 
+    company VARCHAR(20), 
+    brand VARCHAR(20), 
+    available VARCHAR(20), 
+    location VARCHAR(40)
+);
+
+INSERT INTO driver VALUES('James Wilson', '35', 'Male', 'Uber', 'Toyota', 'Yes', 'Downtown');
+INSERT INTO driver VALUES('Emily Davis', '30', 'Female', 'Lyft', 'Honda', 'No', 'Airport');
+INSERT INTO driver VALUES('Michael Johnson', '45', 'Male', 'Taxi', 'Ford', 'Yes', 'Suburbs');
+INSERT INTO driver VALUES('Sarah Lee', '28', 'Female', 'Uber', 'Tesla', 'Yes', 'City Center');
+INSERT INTO driver VALUES('David Clark', '38', 'Male', 'Lyft', 'Chevrolet', 'No', 'Old Town');
+
+SELECT * FROM driver;
+
+CREATE TABLE customer(
+    document VARCHAR(20), 
+    number VARCHAR(30), 
+    name VARCHAR(30), 
+    gender VARCHAR(15), 
+    country VARCHAR(20), 
+    room VARCHAR(10), 
+    checkintime VARCHAR(80), 
+    deposit VARCHAR(20)
+);
+
+INSERT INTO customer VALUES('Passport', 'P123456', 'Alice White', 'Female', 'USA', '101', '2024-08-25 14:00', '200');
+INSERT INTO customer VALUES('ID Card', 'ID78910', 'Mark Taylor', 'Male', 'Canada', '102', '2024-08-24 16:00', '300');
+INSERT INTO customer VALUES('Driving License', 'DL54321', 'Sophia Green', 'Female', 'UK', '103', '2024-08-23 12:00', '250');
+INSERT INTO customer VALUES('Passport', 'P987654', 'James Brown', 'Male', 'Australia', '104', '2024-08-22 15:00', '220');
+INSERT INTO customer VALUES('ID Card', 'ID43210', 'Emma Stone', 'Female', 'Germany', '105', '2024-08-21 13:00', '280');
+
+SELECT * FROM customer;
+
+CREATE TABLE department(
+    department VARCHAR(30), 
+    budget VARCHAR(30)
+);
+
+INSERT INTO department VALUES('Front Office', '200000');
+INSERT INTO department VALUES('HouseKeeping', '100000');
+INSERT INTO department VALUES('Restaurant', '500000');
+INSERT INTO department VALUES('Food Production', '700000');
+INSERT INTO department VALUES('Security', '150000');
+
+SELECT * FROM department;
