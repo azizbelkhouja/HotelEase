@@ -29,7 +29,7 @@ public class Reception extends JFrame implements ActionListener {
         btnNewCustomerForm.addActionListener(this);
         contentPane.add(btnNewCustomerForm);
 
-        JButton btnNewButton = new JButton("Room");
+        JButton btnNewButton = new JButton("Rooms");
         btnNewButton.setBounds(10, 70, 200, 30);
         btnNewButton.setBackground(Color.BLACK);
         btnNewButton.setForeground(Color.WHITE);
@@ -108,6 +108,9 @@ public class Reception extends JFrame implements ActionListener {
             switch (command) {
                 case "New Customer Form":
                     new AddCustomer().setVisible(true);
+                    break;
+                case "Rooms":
+                    new Room().setVisible(true);
                     break;
                 // to add more cases as necessary for other buttons
                 default:

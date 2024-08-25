@@ -126,7 +126,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         back.setBounds(200, 410, 120, 30);
-        back.addActionListener(this); // Added ActionListener for the back button
+        back.addActionListener(this);
         add(back);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fifth.png"));
@@ -176,7 +176,7 @@ public class AddCustomer extends JFrame implements ActionListener {
             
         } else if (ae.getSource() == back) {
             setVisible(false);
-            new Reception();  // Go back to the Reception screen
+            new Reception();
         }
     }
     
