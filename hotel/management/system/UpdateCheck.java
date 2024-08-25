@@ -19,7 +19,7 @@ public class UpdateCheck extends JFrame {
         text.setForeground(Color.BLUE);
         add(text);
         
-        JLabel lblid = new JLabel("Customer Id");
+        JLabel lblid = new JLabel("Customer Id: ");
         lblid.setBounds(30, 80, 100, 20);
         add(lblid);
         
@@ -36,6 +36,34 @@ public class UpdateCheck extends JFrame {
         } catch(Exception e) {
             e.printStackTrace();
         }
+        
+        JLabel lblroom = new JLabel("Room Number: ");
+        lblroom.setBounds(30, 120, 100, 20);
+        add(lblroom);
+        JTextField tfroom = new JTextField();
+        tfroom.setBounds(200, 120, 150, 25);
+        add(tfroom);
+        
+        JLabel lblname = new JLabel("Name: ");
+        lblname.setBounds(30, 160, 100, 20);
+        add(lblname);
+        JTextField tfname = new JTextField();
+        tfname.setBounds(200, 160, 150, 25);
+        add(tfname);
+        
+        JLabel lblcheckin = new JLabel("Checkin Time: ");
+        lblcheckin.setBounds(30, 200, 100, 20);
+        add(lblcheckin);
+        JTextField tfcheckin = new JTextField();
+        tfcheckin.setBounds(200, 200, 150, 25);
+        add(tfcheckin);
+        
+        JLabel lblpaid = new JLabel("Amount Paid: ");
+        lblpaid.setBounds(30, 240, 100, 20);
+        add(lblpaid);
+        JTextField tfpaid = new JTextField();
+        tfpaid.setBounds(200, 240, 150, 25);
+        add(tfpaid);
         
         
         
