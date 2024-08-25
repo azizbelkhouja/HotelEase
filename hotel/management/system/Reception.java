@@ -78,7 +78,7 @@ public class Reception extends JFrame implements ActionListener {
         btnNewButton_5.addActionListener(this);
         contentPane.add(btnNewButton_5);
 
-        JButton btnNewButton_6 = new JButton("Update Room Status");
+        JButton btnNewButton_6 = new JButton("Update Room");
         btnNewButton_6.setBounds(10, 350, 200, 30);
         btnNewButton_6.setBackground(Color.BLACK);
         btnNewButton_6.setForeground(Color.WHITE);
@@ -139,6 +139,9 @@ public class Reception extends JFrame implements ActionListener {
                     break;
                 case "Update Check Status":
                     new UpdateCheck().setVisible(true);
+                    break;
+                case "Update Room":
+                    new UpdateRoom().setVisible(true);
                     break;
                 // here add more cases as necessary for other buttons
                 default:
