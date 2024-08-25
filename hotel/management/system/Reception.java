@@ -131,6 +131,12 @@ public class Reception extends JFrame implements ActionListener {
                 case "Managers Info":
                     new ManagerInfo().setVisible(true);
                     break;
+                case "Customers Info":
+                    new CustomerInfo().setVisible(true);
+                    break;
+                case "Search Room":
+                    new SearchRoom().setVisible(true);
+                    break;
                 // here add more cases as necessary for other buttons
                 default:
                     break;

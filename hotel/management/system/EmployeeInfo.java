@@ -1,7 +1,6 @@
 package hotel.management.system;
 
 import java.awt.*;
-
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
 import java.sql.*;	
