@@ -22,6 +22,10 @@ public class Conn {
         }
     }
     
+    public Connection getConnection() {
+        return c;
+    }
+    
     public void close() {
         try {
             if (s != null) s.close();

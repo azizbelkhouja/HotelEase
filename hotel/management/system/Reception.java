@@ -36,28 +36,28 @@ public class Reception extends JFrame implements ActionListener {
         btnNewButton.addActionListener(this);
         contentPane.add(btnNewButton);
 
-        JButton btnNewButton_1 = new JButton("Department");
+        JButton btnNewButton_1 = new JButton("Departments");
         btnNewButton_1.setBounds(10, 110, 200, 30);
         btnNewButton_1.setBackground(Color.BLACK);
         btnNewButton_1.setForeground(Color.WHITE);
         btnNewButton_1.addActionListener(this);
         contentPane.add(btnNewButton_1);
 
-        JButton btnNewButton_2 = new JButton("All Employee Info");
+        JButton btnNewButton_2 = new JButton("Employees Info");
         btnNewButton_2.setBounds(10, 150, 200, 30);
         btnNewButton_2.setBackground(Color.BLACK);
         btnNewButton_2.setForeground(Color.WHITE);
         btnNewButton_2.addActionListener(this);
         contentPane.add(btnNewButton_2);
 
-        JButton btnNewButton_3 = new JButton("Customer Info");
+        JButton btnNewButton_3 = new JButton("Customers Info");
         btnNewButton_3.setBounds(10, 190, 200, 30);
         btnNewButton_3.setBackground(Color.BLACK);
         btnNewButton_3.setForeground(Color.WHITE);
         btnNewButton_3.addActionListener(this);
         contentPane.add(btnNewButton_3);
 
-        JButton btnManagerInfo = new JButton("Manager Info");
+        JButton btnManagerInfo = new JButton("Managers Info");
         btnManagerInfo.setBounds(10, 230, 200, 30);
         btnManagerInfo.setBackground(Color.BLACK);
         btnManagerInfo.setForeground(Color.WHITE);
@@ -122,8 +122,11 @@ public class Reception extends JFrame implements ActionListener {
                 case "Rooms":
                     new Room().setVisible(true);
                     break;
-                case "Department":
+                case "Departments":
                     new Department().setVisible(true);
+                    break;
+                case "Employees Info":
+                    new EmployeeInfo().setVisible(true);
                     break;
                 // here add more cases as necessary for other buttons
                 default:
