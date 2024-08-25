@@ -7,6 +7,8 @@ import java.sql.*;
 public class UpdateCheck extends JFrame {
     
     Choice ccustomer;
+    JButton check, update, back;
+    
     
     UpdateCheck() {
         
@@ -65,6 +67,35 @@ public class UpdateCheck extends JFrame {
         tfpaid.setBounds(200, 240, 150, 25);
         add(tfpaid);
         
+        JLabel lblpending = new JLabel("Pending Amount: ");
+        lblpending.setBounds(30, 240, 100, 20);
+        add(lblpending);
+        JTextField tfpending = new JTextField();
+        tfpending.setBounds(200, 240, 150, 25);
+        add(tfpending);
+        
+        check = new JButton("Check");
+        check.setBackground(Color.BLACK);
+        check.setForeground(Color.WHITE);
+        check.setBounds(30, 340, 100, 30);
+        add(check);
+        
+        update = new JButton("Update");
+        update.setBackground(Color.BLACK);
+        update.setForeground(Color.WHITE);
+        update.setBounds(150, 340, 100, 30);
+        add(update);
+        
+        back = new JButton("Back");
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
+        back.setBounds(270, 340, 100, 30);
+        add(back);
+        
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/nine.jpg"));
+        JLabel image = new JLabel(i1);
+        image.setBounds(400, 50, 500, 300);
+        add(image);
         
         
         
