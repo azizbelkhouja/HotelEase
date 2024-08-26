@@ -143,6 +143,9 @@ public class Reception extends JFrame implements ActionListener {
                 case "Update Room":
                     new UpdateRoom().setVisible(true);
                     break;
+                case "Pick up Service":
+                    new PickUp().setVisible(true);
+                    break;
                 // here add more cases as necessary for other buttons
                 default:
                     break;

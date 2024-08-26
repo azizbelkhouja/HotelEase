@@ -44,7 +44,7 @@ public class SearchRoom extends JFrame {
 		lblSearchForRoom.setBounds(250, 11, 186, 31);
 		contentPane.add(lblSearchForRoom);
 		
-		JLabel lblRoomAvailable = new JLabel("Room Bed Type:");
+		JLabel lblRoomAvailable = new JLabel("Bed Type:");
 		lblRoomAvailable.setBounds(50, 73, 96, 14);
 		contentPane.add(lblRoomAvailable);
 		
