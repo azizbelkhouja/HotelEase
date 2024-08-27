@@ -32,16 +32,6 @@ public class Checkout extends JFrame implements ActionListener {
         ccustomer.setBounds(150, 80, 100, 30);
         add(ccustomer);
         
-        try {
-            Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from customer");
-            while(rs.next()) {
-                ccustomer.add(rs.getString("number"));
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/tick.png"));
         Image i2 = i1.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -85,6 +75,18 @@ public class Checkout extends JFrame implements ActionListener {
         back.addActionListener(this);
         add(back);
         
+        try {
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery("select * from customer");
+            while(rs.next()) {
+                ccustomer.add(rs.getString("number"));
+                lblroomnumber.setText(rs.getString("room"));
+                lblcheckintime.setText(rs.getString("checkintime"));
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        
         ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("icons/sixth.jpg"));
         Image i5 = i4.getImage().getScaledInstance(400, 250, Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon(i5);
@@ -98,7 +100,7 @@ public class Checkout extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == check) {
-            String query1 = "delete from customer where number = '"+ccustomer+"'";
+            String query1 = "delete from customer where number = '"+ccustomer.getSelectedItem()+"'";
             String query2 = "update room set availability = 'Available' where roomnumber = '"+lblroomnumber.getText()+"'";
             try {
                 Conn c = new Conn();

@@ -146,6 +146,13 @@ public class Reception extends JFrame implements ActionListener {
                 case "Pick up Service":
                     new PickUp().setVisible(true);
                     break;
+                case "Check Out":
+                    new Checkout().setVisible(true);
+                    break;
+                case "Log Out":
+                    setVisible(false);
+                    System.exit(0);
+                    break;
                 // here add more cases as necessary for other buttons
                 default:
                     break;
