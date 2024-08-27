@@ -7,63 +7,64 @@ import java.util.Date;
 import java.awt.event.*;
 
 public class AddCustomer extends JFrame implements ActionListener {
-    
+
     JComboBox<String> comboid;
     JTextField tfnumber, tfname, tfcountry, tfdeposit;
     JRadioButton rbmale, rbfemale;
     Choice croom;
     JLabel checkintime;
     JButton add, back;
-    
+
     AddCustomer() {
-        
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        
+
         JLabel text = new JLabel("NEW CUSTOMER FORM");
-        text.setBounds(100, 20, 300, 30);
-        text.setFont(new Font("Raleway", Font.PLAIN, 20));
+        text.setBounds(150, 20, 400, 40);
+        text.setFont(new Font("SansSerif", Font.BOLD, 30));
         add(text);
-        
-        JLabel lblid = new JLabel("ID: ");
-        lblid.setBounds(35, 80, 100, 20);
-        lblid.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lblid = new JLabel("ID:");
+        lblid.setBounds(50, 80, 150, 30);
+        lblid.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblid);
-        
+
         String[] options = {"FISCAL CODE", "Passport", "Driving Licence"};
         comboid = new JComboBox<>(options);
-        comboid.setBounds(200, 80, 150, 25);
-        comboid.setBackground(Color.WHITE);
+        comboid.setBounds(200, 80, 200, 30);
+        comboid.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(comboid);
-        
-        JLabel lblnumber = new JLabel("Number: ");
-        lblnumber.setBounds(35, 120, 100, 20);
-        lblnumber.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lblnumber = new JLabel("Number:");
+        lblnumber.setBounds(50, 130, 150, 30);
+        lblnumber.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblnumber);
         tfnumber = new JTextField();
-        tfnumber.setBounds(200, 120, 150, 25);
+        tfnumber.setBounds(200, 130, 200, 30);
+        tfnumber.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfnumber);
-        
-        JLabel lblname = new JLabel("Name: ");
-        lblname.setBounds(35, 160, 100, 20);
-        lblname.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lblname = new JLabel("Name:");
+        lblname.setBounds(50, 180, 150, 30);
+        lblname.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblname);
         tfname = new JTextField();
-        tfname.setBounds(200, 160, 150, 25);
+        tfname.setBounds(200, 180, 200, 30);
+        tfname.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfname);
-        
-        JLabel lblgender = new JLabel("GENDER: ");
-        lblgender.setBounds(35, 200, 120, 30);
-        lblgender.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lblgender = new JLabel("Gender:");
+        lblgender.setBounds(50, 230, 150, 30);
+        lblgender.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblgender);
         rbmale = new JRadioButton("Male");
-        rbmale.setBounds(200, 200, 70, 30);
-        rbmale.setFont(new Font("Raleway", Font.PLAIN, 14));
+        rbmale.setBounds(200, 230, 80, 30);
+        rbmale.setFont(new Font("SansSerif", Font.PLAIN, 16));
         rbmale.setBackground(Color.WHITE);
         add(rbmale);
         rbfemale = new JRadioButton("Female");
-        rbfemale.setBounds(280, 200, 100, 30);
-        rbfemale.setFont(new Font("Raleway", Font.PLAIN, 14));
+        rbfemale.setBounds(290, 230, 100, 30);
+        rbfemale.setFont(new Font("SansSerif", Font.PLAIN, 16));
         rbfemale.setBackground(Color.WHITE);
         add(rbfemale);
 
@@ -71,17 +72,18 @@ public class AddCustomer extends JFrame implements ActionListener {
         bg.add(rbmale);
         bg.add(rbfemale);
 
-        JLabel lblcountry = new JLabel("Country: ");
-        lblcountry.setBounds(35, 240, 100, 20);
-        lblcountry.setFont(new Font("Raleway", Font.PLAIN, 20));
+        JLabel lblcountry = new JLabel("Country:");
+        lblcountry.setBounds(50, 280, 150, 30);
+        lblcountry.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblcountry);
         tfcountry = new JTextField();
-        tfcountry.setBounds(200, 240, 150, 25);
+        tfcountry.setBounds(200, 280, 200, 30);
+        tfcountry.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfcountry);
-        
-        JLabel lblroom = new JLabel("Room: ");
-        lblroom.setBounds(35, 280, 150, 20);
-        lblroom.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lblroom = new JLabel("Room:");
+        lblroom.setBounds(50, 330, 150, 30);
+        lblroom.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblroom);
         croom = new Choice();
         try {
@@ -94,65 +96,75 @@ public class AddCustomer extends JFrame implements ActionListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        croom.setBounds(200, 280, 150, 25);
+        croom.setBounds(200, 330, 200, 30);
         add(croom);
-        
-        JLabel lbltime = new JLabel("CheckIn: ");
-        lbltime.setBounds(35, 320, 150, 20);
-        lbltime.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lbltime = new JLabel("Check-In:");
+        lbltime.setBounds(50, 380, 150, 30);
+        lbltime.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lbltime);
         Date date = new Date();
-        checkintime = new JLabel("" + date);
-        checkintime.setBounds(200, 320, 150, 20);
-        checkintime.setFont(new Font("Raleway", Font.PLAIN, 14));
+        checkintime = new JLabel(date.toString());
+        checkintime.setBounds(200, 380, 200, 30);
+        checkintime.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(checkintime);
-        
-        JLabel lbldeposit = new JLabel("Deposit: ");
-        lbldeposit.setBounds(35, 360, 100, 20);
-        lbldeposit.setFont(new Font("Raleway", Font.PLAIN, 20));
+
+        JLabel lbldeposit = new JLabel("Deposit:");
+        lbldeposit.setBounds(50, 430, 150, 30);
+        lbldeposit.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lbldeposit);
         tfdeposit = new JTextField();
-        tfdeposit.setBounds(200, 360, 150, 25);
+        tfdeposit.setBounds(200, 430, 200, 30);
+        tfdeposit.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfdeposit);
-        
-        add = new JButton("Add");
-        add.setBackground(Color.BLACK);
-        add.setForeground(Color.WHITE);
-        add.setBounds(50, 410, 120, 30);
-        add.addActionListener(this);
+
+        add = createStyledButton("Add");
+        add.setBounds(50, 480, 150, 40);
         add(add);
-        
-        back = new JButton("Back");
-        back.setBackground(Color.BLACK);
-        back.setForeground(Color.WHITE);
-        back.setBounds(200, 410, 120, 30);
-        back.addActionListener(this);
+
+        back = createStyledButton("Back");
+        back.setBounds(250, 480, 150, 40);
         add(back);
-        
+
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fifth.png"));
         Image i2 = i1.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel image = new JLabel(i3);
-        image.setBounds(400, 50, 300, 400);
+        JLabel image = new JLabel(new ImageIcon(i2));
+        image.setBounds(450, 80, 300, 400);
         add(image);
-        
-        setBounds(350, 200, 800, 550);
+
+        setBounds(350, 200, 800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-    
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(70, 130, 180));
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        button.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent evt) {
+                button.setBackground(new Color(100, 149, 237));
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                button.setBackground(new Color(70, 130, 180));
+            }
+        });
+
+        button.addActionListener(this);
+        return button;
+    }
+
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == add) {
             String id = (String) comboid.getSelectedItem();
             String number = tfnumber.getText();
             String name = tfname.getText();
-            String gender = null;
-            
-            if (rbmale.isSelected()) {
-                gender = "Male";
-            } else {
-                gender = "Female";
-            }
-            
+            String gender = rbmale.isSelected() ? "Male" : "Female";
             String country = tfcountry.getText();
             String room = croom.getSelectedItem();
             String time = checkintime.getText();
@@ -161,26 +173,30 @@ public class AddCustomer extends JFrame implements ActionListener {
             try {
                 String query1 = "insert into customer values('" + id + "','" + number + "','" + name + "','" + gender + "','" + country + "','" + room + "','" + time + "','" + deposit + "')";
                 String query2 = "update room set availability = 'Occupied' where roomnumber = '" + room + "'";
-                
+
                 Conn conn = new Conn();
                 conn.s.executeUpdate(query1);
                 conn.s.executeUpdate(query2);
-                
+
                 JOptionPane.showMessageDialog(null, "Data Inserted Successfully");
                 setVisible(false);
                 new Reception();
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
         } else if (ae.getSource() == back) {
             setVisible(false);
             new Reception();
         }
     }
-    
+
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new AddCustomer();
     }
 }
