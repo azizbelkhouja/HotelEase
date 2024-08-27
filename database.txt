@@ -70,6 +70,8 @@ INSERT INTO driver VALUES('David Clark', '38', 'Male', 'Lyft', 'Chevrolet', 'No'
 
 SELECT * FROM driver;
 
+ALTER TABLE driver RENAME COLUMN branch to brand;
+
 CREATE TABLE customer(
     document VARCHAR(20), 
     number VARCHAR(30), 
