@@ -1,6 +1,6 @@
 # HotelEase - Hotel Management System
 
-[Run the application](https://github.com/azizbelkhouja/HotelEase/hotel-management-system.jar)
+[Run the application](https://github.com/azizbelkhouja/HotelEase/blob/main/hotel-management-system.jar)
 
 ## Overview
 
