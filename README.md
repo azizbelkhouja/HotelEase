@@ -1,6 +1,6 @@
 # HotelEase - Hotel Management System
 
-Go to the [Releases section](https://github.com/azizbelkhouja/hotel-management-system/releases) of this repository. Here you'll find the latest versions of the application.
+[Run the application](https://github.com/azizbelkhouja/HotelEase/hotel-management-system.jar)
 
 ## Overview
 
