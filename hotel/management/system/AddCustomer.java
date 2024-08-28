@@ -33,39 +33,34 @@ public class AddCustomer extends JFrame implements ActionListener {
         comboid = new JComboBox<>(options);
         comboid.setBounds(200, 80, 200, 30);
         comboid.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        comboid.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         add(comboid);
 
         JLabel lblnumber = new JLabel("Number:");
         lblnumber.setBounds(50, 130, 150, 30);
         lblnumber.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblnumber);
-        tfnumber = new JTextField();
+        tfnumber = createModernTextField();
         tfnumber.setBounds(200, 130, 200, 30);
-        tfnumber.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfnumber);
 
         JLabel lblname = new JLabel("Name:");
         lblname.setBounds(50, 180, 150, 30);
         lblname.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblname);
-        tfname = new JTextField();
+        tfname = createModernTextField();
         tfname.setBounds(200, 180, 200, 30);
-        tfname.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfname);
 
         JLabel lblgender = new JLabel("Gender:");
         lblgender.setBounds(50, 230, 150, 30);
         lblgender.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblgender);
-        rbmale = new JRadioButton("Male");
+        rbmale = createModernRadioButton("Male");
         rbmale.setBounds(200, 230, 80, 30);
-        rbmale.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        rbmale.setBackground(Color.WHITE);
         add(rbmale);
-        rbfemale = new JRadioButton("Female");
+        rbfemale = createModernRadioButton("Female");
         rbfemale.setBounds(290, 230, 100, 30);
-        rbfemale.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        rbfemale.setBackground(Color.WHITE);
         add(rbfemale);
 
         ButtonGroup bg = new ButtonGroup();
@@ -76,9 +71,8 @@ public class AddCustomer extends JFrame implements ActionListener {
         lblcountry.setBounds(50, 280, 150, 30);
         lblcountry.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lblcountry);
-        tfcountry = new JTextField();
+        tfcountry = createModernTextField();
         tfcountry.setBounds(200, 280, 200, 30);
-        tfcountry.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfcountry);
 
         JLabel lblroom = new JLabel("Room:");
@@ -113,9 +107,8 @@ public class AddCustomer extends JFrame implements ActionListener {
         lbldeposit.setBounds(50, 430, 150, 30);
         lbldeposit.setFont(new Font("SansSerif", Font.PLAIN, 18));
         add(lbldeposit);
-        tfdeposit = new JTextField();
+        tfdeposit = createModernTextField();
         tfdeposit.setBounds(200, 430, 200, 30);
-        tfdeposit.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(tfdeposit);
 
         add = createStyledButton("Add");
@@ -137,6 +130,24 @@ public class AddCustomer extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    private JTextField createModernTextField() {
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        textField.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(192, 192, 192)),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        return textField;
+    }
+
+    private JRadioButton createModernRadioButton(String text) {
+        JRadioButton radioButton = new JRadioButton(text);
+        radioButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        radioButton.setBackground(Color.WHITE);
+        radioButton.setFocusPainted(false);
+        return radioButton;
+    }
+
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -144,14 +155,21 @@ public class AddCustomer extends JFrame implements ActionListener {
         button.setBackground(new Color(70, 130, 180));
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createLineBorder(new Color(100, 149, 237), 2));
+        button.setOpaque(true);
+        button.setBackground(new Color(70, 130, 180));
+        button.setUI(new javax.swing.plaf.basic.BasicButtonUI());
 
         button.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
                 button.setBackground(new Color(100, 149, 237));
+                button.setForeground(Color.WHITE);
             }
 
             public void mouseExited(MouseEvent evt) {
                 button.setBackground(new Color(70, 130, 180));
+                button.setForeground(Color.WHITE);
             }
         });
 
