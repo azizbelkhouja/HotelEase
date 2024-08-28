@@ -7,148 +7,155 @@ import java.sql.*;
 
 public class AddEmployee extends JFrame implements ActionListener {
 
-    JTextField tfname, tfage, tfphone, tfemail, tfsalary, tfcf;
-    JRadioButton rbmale, rbfemale;
-    JButton submit;
-    JComboBox<String> cbjob;
+    private JTextField tfName, tfAge, tfPhone, tfEmail, tfSalary, tfCf;
+    private JRadioButton rbMale, rbFemale;
+    private JButton btnSubmit;
+    private JComboBox<String> cbJob;
 
-    AddEmployee() {
-        setLayout(null);
+    public AddEmployee() {
+        setTitle("Add Employee");
+        setBounds(350, 200, 850, 540);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         // Name
-        JLabel lblname = new JLabel("NAME: ");
-        lblname.setBounds(60, 30, 120, 30);
-        lblname.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblname);
-        tfname = new JTextField();
-        tfname.setBounds(200, 30, 150, 30);
-        add(tfname);
+        JLabel lblName = createLabel("Name:", 60, 30);
+        tfName = createTextField(200, 30);
 
         // Age
-        JLabel lblage = new JLabel("AGE: ");
-        lblage.setBounds(60, 80, 120, 30);
-        lblage.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblage);
-        tfage = new JTextField();
-        tfage.setBounds(200, 80, 150, 30);
-        add(tfage);
+        JLabel lblAge = createLabel("Age:", 60, 80);
+        tfAge = createTextField(200, 80);
 
         // Gender
-        JLabel lblgender = new JLabel("GENDER: ");
-        lblgender.setBounds(60, 130, 120, 30);
-        lblgender.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblgender);
-        rbmale = new JRadioButton("Male");
-        rbmale.setBounds(200, 130, 70, 30);
-        rbmale.setFont(new Font("serif", Font.PLAIN, 14));
-        rbmale.setBackground(Color.WHITE);
-        add(rbmale);
-        rbfemale = new JRadioButton("Female");
-        rbfemale.setBounds(280, 130, 70, 30);
-        rbfemale.setFont(new Font("serif", Font.PLAIN, 14));
-        rbfemale.setBackground(Color.WHITE);
-        add(rbfemale);
+        JLabel lblGender = createLabel("Gender:", 60, 130);
+        rbMale = createRadioButton("Male", 200, 130);
+        rbFemale = createRadioButton("Female", 280, 130);
 
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(rbmale);
-        bg.add(rbfemale);
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(rbMale);
+        genderGroup.add(rbFemale);
 
         // Job
-        JLabel lbljob = new JLabel("JOB: ");
-        lbljob.setBounds(60, 180, 120, 30);
-        lbljob.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lbljob);
-        String[] str = {"Front Desk Clerk", "Porter", "Housekeeping", "Kitchen Staff", "Room Service", "Waiter/Waitress", "Manager", "Accountant", "Chef"};
-        cbjob = new JComboBox<>(str);
-        cbjob.setBounds(200, 180, 150, 30);
-        cbjob.setBackground(Color.WHITE);
-        add(cbjob);
+        JLabel lblJob = createLabel("Job:", 60, 180);
+        String[] jobs = {"Front Desk Clerk", "Porter", "Housekeeping", "Kitchen Staff", "Room Service", "Waiter/Waitress", "Manager", "Accountant", "Chef"};
+        cbJob = createComboBox(jobs, 200, 180);
 
         // Salary
-        JLabel lblsalary = new JLabel("SALARY: ");
-        lblsalary.setBounds(60, 230, 120, 30);
-        lblsalary.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblsalary);
-        tfsalary = new JTextField();
-        tfsalary.setBounds(200, 230, 150, 30);
-        add(tfsalary);
+        JLabel lblSalary = createLabel("Salary:", 60, 230);
+        tfSalary = createTextField(200, 230);
 
         // Phone
-        JLabel lblphone = new JLabel("PHONE: ");
-        lblphone.setBounds(60, 280, 120, 30);
-        lblphone.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblphone);
-        tfphone = new JTextField();
-        tfphone.setBounds(200, 280, 150, 30);
-        add(tfphone);
+        JLabel lblPhone = createLabel("Phone:", 60, 280);
+        tfPhone = createTextField(200, 280);
 
         // Email
-        JLabel lblemail = new JLabel("EMAIL: ");
-        lblemail.setBounds(60, 330, 120, 30);
-        lblemail.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblemail);
-        tfemail = new JTextField();
-        tfemail.setBounds(200, 330, 150, 30);
-        add(tfemail);
+        JLabel lblEmail = createLabel("Email:", 60, 330);
+        tfEmail = createTextField(200, 330);
 
         // Fiscal Code
-        JLabel lblcf = new JLabel("FISCAL CODE: ");
-        lblcf.setBounds(60, 380, 120, 30);
-        lblcf.setFont(new Font("serif", Font.PLAIN, 17));
-        add(lblcf);
-        tfcf = new JTextField();
-        tfcf.setBounds(200, 380, 150, 30);
-        add(tfcf);
+        JLabel lblCf = createLabel("Fiscal Code:", 60, 380);
+        tfCf = createTextField(200, 380);
 
-        // Submit button
-        submit = new JButton("SUBMIT");
-        submit.setBounds(200, 430, 150, 30);
-        submit.setBackground(Color.BLACK);
-        submit.setForeground(Color.WHITE);
-        submit.setFont(new Font("serif", Font.PLAIN, 24));
-        submit.addActionListener(this);
-        add(submit);
+        // Submit Button
+        btnSubmit = createButton("Submit", 200, 430);
+        btnSubmit.addActionListener(this);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/tenth.jpg"));
-        Image i2 = i1.getImage().getScaledInstance(450, 450, Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel image = new JLabel(i3);
-        image.setBounds(380, 60, 450, 370);
+        // Image
+        JLabel image = createImageLabel("icons/tenth.jpg", 380, 60, 450, 370);
         add(image);
 
+        // Background color
         getContentPane().setBackground(Color.WHITE);
-        setBounds(350, 200, 850, 540);
+
         setVisible(true);
     }
 
+    private JLabel createLabel(String text, int x, int y) {
+        JLabel label = new JLabel(text);
+        label.setBounds(x, y, 120, 30);
+        label.setFont(new Font("SansSerif", Font.PLAIN, 17));
+        add(label);
+        return label;
+    }
+
+    private JTextField createTextField(int x, int y) {
+        JTextField textField = new JTextField();
+        textField.setBounds(x, y, 150, 30);
+        textField.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        add(textField);
+        return textField;
+    }
+
+    private JRadioButton createRadioButton(String text, int x, int y) {
+        JRadioButton radioButton = new JRadioButton(text);
+        radioButton.setBounds(x, y, 70, 30);
+        radioButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        radioButton.setBackground(Color.WHITE);
+        add(radioButton);
+        return radioButton;
+    }
+
+    private JComboBox<String> createComboBox(String[] options, int x, int y) {
+        JComboBox<String> comboBox = new JComboBox<>(options);
+        comboBox.setBounds(x, y, 150, 30);
+        comboBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        comboBox.setBackground(Color.WHITE);
+        add(comboBox);
+        return comboBox;
+    }
+
+    private JButton createButton(String text, int x, int y) {
+        JButton button = new JButton(text);
+        button.setBounds(x, y, 150, 40);
+        button.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(70, 130, 180));
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        button.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent evt) {
+                button.setBackground(new Color(100, 149, 237));
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                button.setBackground(new Color(70, 130, 180));
+            }
+        });
+
+        add(button);
+        return button;
+    }
+
+    private JLabel createImageLabel(String imagePath, int x, int y, int width, int height) {
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource(imagePath));
+        Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
+        JLabel label = new JLabel(new ImageIcon(img));
+        label.setBounds(x, y, width, height);
+        return label;
+    }
+
     public void actionPerformed(ActionEvent ae) {
-        String name = tfname.getText();
-        String age = tfage.getText();
-        String salary = tfsalary.getText();
-        String phone = tfphone.getText();
-        String cf = tfcf.getText();
-        String email = tfemail.getText();
+        String name = tfName.getText();
+        String age = tfAge.getText();
+        String salary = tfSalary.getText();
+        String phone = tfPhone.getText();
+        String email = tfEmail.getText();
+        String cf = tfCf.getText();
 
-        String gender = null;
-        if (rbmale.isSelected()) {
-            gender = "Male";
-        } else if (rbfemale.isSelected()) {
-            gender = "Female";
-        }
-
-        String job = (String) cbjob.getSelectedItem();
+        String gender = rbMale.isSelected() ? "Male" : rbFemale.isSelected() ? "Female" : null;
+        String job = (String) cbJob.getSelectedItem();
 
         // Basic validation
-        if (name.isEmpty() || age.isEmpty() || salary.isEmpty() || phone.isEmpty() || cf.isEmpty() || email.isEmpty() || gender == null || job.isEmpty()) {
+        if (name.isEmpty() || age.isEmpty() || salary.isEmpty() || phone.isEmpty() || email.isEmpty() || cf.isEmpty() || gender == null || job.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill in all fields");
             return;
         }
 
         try {
             Conn conn = new Conn();
-            Connection con = conn.getConnection();
             String query = "INSERT INTO employee (name, age, gender, job, salary, phone, email, cf) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = conn.getConnection().prepareStatement(query);
             ps.setString(1, name);
             ps.setString(2, age);
             ps.setString(3, gender);
@@ -168,6 +175,11 @@ public class AddEmployee extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new AddEmployee();
     }
 }

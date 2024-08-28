@@ -22,11 +22,11 @@ public class AddRooms extends JFrame implements ActionListener{
 	contentPane.setLayout(null);
         
         ImageIcon i1  = new ImageIcon(ClassLoader.getSystemResource("icons/twelve.jpg"));
-                Image i3 = i1.getImage().getScaledInstance(500, 300,Image.SCALE_DEFAULT);
-                ImageIcon i2 = new ImageIcon(i3);
-                JLabel l15 = new JLabel(i2);
-                l15.setBounds(400,30,500,370);
-                add(l15);
+        Image i3 = i1.getImage().getScaledInstance(500, 300,Image.SCALE_DEFAULT);
+        ImageIcon i2 = new ImageIcon(i3);
+        JLabel l15 = new JLabel(i2);
+        l15.setBounds(400,30,500,370);
+        add(l15);
         
         JLabel l10 = new JLabel("Add Rooms");
         l10.setFont(new Font("Tahoma", Font.BOLD, 18));
