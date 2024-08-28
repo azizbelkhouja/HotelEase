@@ -1,5 +1,7 @@
 # HotelEase - Hotel Management System
 
+Go to the [Releases section](https://github.com/azizbelkhouja/hotel-management-system/releases) of this repository. Here you'll find the latest versions of the application.
+
 ## Overview
 
 The **Hotel Management System** is a Java-based application designed to manage hotel operations efficiently. The system provides functionalities for managing hotel rooms, customer information, check-ins, and check-outs. It features a graphical user interface built with Swing and follows modern design principles to ensure a user-friendly experience.
