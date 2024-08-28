@@ -1,113 +1,119 @@
 package hotel.management.system;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
 public class AddDriver extends JFrame implements ActionListener {
 
-    private JTextField t1, t2, t3, t4, t5;
-    private JComboBox<String> genderBox, availableBox;
+    private JTextField tfName, tfAge, tfCompany, tfBrand, tfLocation;
+    private JComboBox<String> comboGender, comboAvailable;
     private JButton addButton, backButton;
 
     public AddDriver() {
-        setTitle("Add Driver");
-        setBounds(450, 200, 900, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setBackground(Color.WHITE);
+        setLayout(null);
 
-        JLabel title = new JLabel("Add Drivers");
-        title.setFont(new Font("SansSerif", Font.BOLD, 24));
-        title.setBounds(150, 20, 200, 30);
+        JLabel title = new JLabel("ADD DRIVER");
+        title.setBounds(150, 20, 400, 40);
+        title.setFont(new Font("SansSerif", Font.BOLD, 30));
         add(title);
 
-        JLabel nameLabel = new JLabel("Name:");
-        nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        nameLabel.setBounds(60, 80, 150, 30);
-        add(nameLabel);
+        JLabel lblName = new JLabel("Name:");
+        lblName.setBounds(50, 80, 150, 30);
+        lblName.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblName);
 
-        t1 = new JTextField();
-        t1.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        t1.setBounds(180, 80, 200, 30);
-        add(t1);
+        tfName = createModernTextField();
+        tfName.setBounds(200, 80, 200, 30);
+        add(tfName);
 
-        JLabel ageLabel = new JLabel("Age:");
-        ageLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        ageLabel.setBounds(60, 130, 150, 30);
-        add(ageLabel);
+        JLabel lblAge = new JLabel("Age:");
+        lblAge.setBounds(50, 130, 150, 30);
+        lblAge.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblAge);
 
-        t2 = new JTextField();
-        t2.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        t2.setBounds(180, 130, 200, 30);
-        add(t2);
+        tfAge = createModernTextField();
+        tfAge.setBounds(200, 130, 200, 30);
+        add(tfAge);
 
-        JLabel genderLabel = new JLabel("Gender:");
-        genderLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        genderLabel.setBounds(60, 180, 150, 30);
-        add(genderLabel);
+        JLabel lblGender = new JLabel("Gender:");
+        lblGender.setBounds(50, 180, 150, 30);
+        lblGender.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblGender);
 
-        genderBox = new JComboBox<>(new String[]{"Male", "Female"});
-        genderBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        genderBox.setBounds(180, 180, 200, 30);
-        add(genderBox);
+        comboGender = new JComboBox<>(new String[]{"Male", "Female"});
+        comboGender.setBounds(200, 180, 200, 30);
+        comboGender.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        comboGender.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        add(comboGender);
 
-        JLabel companyLabel = new JLabel("Car Company:");
-        companyLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        companyLabel.setBounds(60, 230, 150, 30);
-        add(companyLabel);
+        JLabel lblCompany = new JLabel("Car Company:");
+        lblCompany.setBounds(50, 230, 150, 30);
+        lblCompany.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblCompany);
 
-        t3 = new JTextField();
-        t3.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        t3.setBounds(180, 230, 200, 30);
-        add(t3);
+        tfCompany = createModernTextField();
+        tfCompany.setBounds(200, 230, 200, 30);
+        add(tfCompany);
 
-        JLabel brandLabel = new JLabel("Car Brand:");
-        brandLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        brandLabel.setBounds(60, 280, 150, 30);
-        add(brandLabel);
+        JLabel lblBrand = new JLabel("Car Brand:");
+        lblBrand.setBounds(50, 280, 150, 30);
+        lblBrand.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblBrand);
 
-        t4 = new JTextField();
-        t4.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        t4.setBounds(180, 280, 200, 30);
-        add(t4);
+        tfBrand = createModernTextField();
+        tfBrand.setBounds(200, 280, 200, 30);
+        add(tfBrand);
 
-        JLabel availableLabel = new JLabel("Available:");
-        availableLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        availableLabel.setBounds(60, 330, 150, 30);
-        add(availableLabel);
+        JLabel lblAvailable = new JLabel("Available:");
+        lblAvailable.setBounds(50, 330, 150, 30);
+        lblAvailable.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblAvailable);
 
-        availableBox = new JComboBox<>(new String[]{"Yes", "No"});
-        availableBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        availableBox.setBounds(180, 330, 200, 30);
-        add(availableBox);
+        comboAvailable = new JComboBox<>(new String[]{"Yes", "No"});
+        comboAvailable.setBounds(200, 330, 200, 30);
+        comboAvailable.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        comboAvailable.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        add(comboAvailable);
 
-        JLabel locationLabel = new JLabel("Location:");
-        locationLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        locationLabel.setBounds(60, 380, 150, 30);
-        add(locationLabel);
+        JLabel lblLocation = new JLabel("Location:");
+        lblLocation.setBounds(50, 380, 150, 30);
+        lblLocation.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        add(lblLocation);
 
-        t5 = new JTextField();
-        t5.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        t5.setBounds(180, 380, 200, 30);
-        add(t5);
+        tfLocation = createModernTextField();
+        tfLocation.setBounds(200, 380, 200, 30);
+        add(tfLocation);
 
         addButton = createStyledButton("Add");
-        addButton.setBounds(60, 430, 150, 40);
+        addButton.setBounds(50, 430, 150, 40);
         add(addButton);
 
         backButton = createStyledButton("Back");
-        backButton.setBounds(230, 430, 150, 40);
+        backButton.setBounds(250, 430, 150, 40);
         add(backButton);
 
-        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/eleven.jpg"));
-        Image img = icon.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT);
-        JLabel imageLabel = new JLabel(new ImageIcon(img));
-        imageLabel.setBounds(450, 100, 400, 300);
-        add(imageLabel);
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fifth.png"));
+        Image i2 = i1.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);
+        JLabel image = new JLabel(new ImageIcon(i2));
+        image.setBounds(450, 80, 300, 400);
+        add(image);
 
-        getContentPane().setBackground(Color.WHITE);
+        setBounds(350, 200, 800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    private JTextField createModernTextField() {
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        textField.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(192, 192, 192)),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        return textField;
     }
 
     private JButton createStyledButton(String text) {
@@ -117,14 +123,21 @@ public class AddDriver extends JFrame implements ActionListener {
         button.setBackground(new Color(70, 130, 180));
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createLineBorder(new Color(100, 149, 237), 2));
+        button.setOpaque(true);
+        button.setBackground(new Color(70, 130, 180));
+        button.setUI(new javax.swing.plaf.basic.BasicButtonUI());
 
         button.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
                 button.setBackground(new Color(100, 149, 237));
+                button.setForeground(Color.WHITE);
             }
 
             public void mouseExited(MouseEvent evt) {
                 button.setBackground(new Color(70, 130, 180));
+                button.setForeground(Color.WHITE);
             }
         });
 
@@ -135,17 +148,17 @@ public class AddDriver extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == addButton) {
             try {
-                Conn c = new Conn();
-                String name = t1.getText();
-                String age = t2.getText();
-                String gender = (String) genderBox.getSelectedItem();
-                String company = t3.getText();
-                String brand = t4.getText();
-                String available = (String) availableBox.getSelectedItem();
-                String location = t5.getText();
+                Conn conn = new Conn();
+                String name = tfName.getText();
+                String age = tfAge.getText();
+                String gender = (String) comboGender.getSelectedItem();
+                String company = tfCompany.getText();
+                String brand = tfBrand.getText();
+                String available = (String) comboAvailable.getSelectedItem();
+                String location = tfLocation.getText();
 
                 String query = "INSERT INTO driver values('" + name + "','" + age + "','" + gender + "','" + company + "','" + brand + "','" + available + "','" + location + "')";
-                c.s.executeUpdate(query);
+                conn.s.executeUpdate(query);
 
                 JOptionPane.showMessageDialog(null, "Driver Successfully Added");
                 setVisible(false);
