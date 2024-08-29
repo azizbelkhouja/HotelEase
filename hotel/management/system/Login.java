@@ -21,7 +21,7 @@ public class Login extends JFrame implements ActionListener {
         user.setForeground(Color.WHITE);
         add(user);
         
-        username = new JTextField("test");  // Placeholder for username
+        username = new JTextField("test");
         username.setBounds(150, 20, 150, 30);
         add(username);
         
@@ -30,7 +30,7 @@ public class Login extends JFrame implements ActionListener {
         pass.setForeground(Color.WHITE);
         add(pass);
         
-        password = new JPasswordField("test");  // Placeholder for password
+        password = new JPasswordField("test");
         password.setBounds(150, 70, 150, 30);
         add(password);
         
