@@ -30,7 +30,7 @@ To run this application, you need:
 
 - **Java Development Kit (JDK)**: Version 8 or higher.
 - **SQL Database**: MySQL or any compatible SQL database.
-- **Database Schema**: Ensure the required tables (`customer`, `room`, etc.) are created in your database.
+- **Database Schema**: Ensure the required tables (`customer`, `room`, etc.) are created in your database
 
 ## Setup Instructions
 
